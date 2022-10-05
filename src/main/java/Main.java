@@ -49,11 +49,12 @@ public class Main {
                         String category = in.next();
                         manager.addBookToLibrary(new Book(id,name,author,publication,publisher,yearOfPublication,category));
                     } else if (num == 2) {
-                        for (String s : Library.allBooks) {
-                            System.out.print(s);
+                        System.out.print("Введите название книги");
+                        String book_for = in.next();
+                        Book book_for_del = librarian.findBookByName(book_for);
+                        manager.deleteBookFromLibrary(book_for_del);
                         }
-
-                        } else {
+                    else {
                         System.out.println("Не правильный ввод");
                     }
                     break;
