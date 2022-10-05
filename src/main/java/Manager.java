@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Manager {
@@ -40,4 +41,15 @@ public class Manager {
         return "Книг жанра '" + category+ "': " + String.valueOf(AllBookCounter);
     }
 
+    public String getStatsReadersBooks(Reader reader) {
+        ArrayList<Book> takenBooks = new ArrayList<Book>();
+        for (ReaderCard r : Main.Library.readerCards) {
+            if (r.reader == reader) {
+                takenBooks = r.takenBooks;
+                break;
+            }
+        }
+
+        return Arrays.toString(takenBooks.toArray()).replace("[", "").replace("]", "");
+    }
 }
