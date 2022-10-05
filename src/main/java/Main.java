@@ -21,6 +21,7 @@ public class Main {
         manager.addBookToLibrary(new Book(4,"How to drink correctly for kettles", "Rusik", "second",
                 "Bablic", 2009, "Life hacks"));
         reader.takeBook(librarian, librarian.findBookByName("Java learning"));
+        Scanner in = new Scanner(System.in);
 
         int choice = -1;
         while (choice != -4){
@@ -29,13 +30,78 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    // Perform "original number" case.
+                    System.out.print("Выберите число:\n 1 - Добавить \n 2 - Удалить \n 3 - Вывод статистики");
+                    int num = in.nextInt();
+                    if (num == 1) {
+                        System.out.print("Введите id");
+                        int id = in.nextInt();
+                        System.out.print("Введите название книги");
+                        String name = in.next();
+                        System.out.print("Введите автора");
+                        String author = in.next();
+                        System.out.print("Введите издание");
+                        String publication = in.next();
+                        System.out.print("Введите издателя");
+                        String publisher= in.next();
+                        System.out.print("Введите год публикации");
+                        int yearOfPublication = in.nextInt();
+                        System.out.print("Введите категорию");
+                        String category = in.next();
+                        manager.addBookToLibrary(new Book(id,name,author,publication,publisher,yearOfPublication,category));
+                    } else if (num == 2) {
+                        for (String s : Library.allBooks) {
+                            System.out.print(s);
+                        }
+
+                        } else {
+                        System.out.println("Не правильный ввод");
+                    }
                     break;
+
                 case 2:
-                    // Perform "encrypt number" case.
+                    System.out.print("Выберите число:\n 1 - Поиск книг в библиотеке \n 2 - Дать книгу читателю");
+                    int w = in.nextInt();
+                    if (w == 1) {
+                        System.out.println("Введите название книги");
+                        String nameBook = in.next();
+                        librarian.findBookByName(nameBook);
+                    }else if (w == 2) {
+                        
+
+                    }
+                    else {
+                        System.out.println("Не правильный ввод");
+                    }
+
                     break;
                 case 3:
-                    // Perform "decrypt number" case.
+                    System.out.print("Выберите число:\n 1 - Взять книгу \n 2 - Вернуть книгу");
+                    int n = in.nextInt();
+                    if (n == 1) {
+                        System.out.print("Введите id");
+                        int id = in.nextInt();
+                        System.out.print("Введите имя пользователя");
+                        String name = in.next();
+                        System.out.print("Введите фамилию");
+                        String surname = in.next();
+                        System.out.print("Введите отчество");
+                        String patronymic = in.next();
+                        System.out.print("Введите адрес");
+                        String address = in.next();
+                        System.out.print("Введите телефон");
+                        String phone= in.next();
+                        new Reader(id,name,surname,patronymic,address,phone);
+                        System.out.print("Введите название книги");
+                        String book_name= in.next();
+                        reader.takeBook(librarian, librarian.findBookByName(book_name));
+                    }else if (n == 2) {
+                        System.out.print("Введите название книги");
+                        String book_name= in.next();
+                        reader.returnBook(librarian, librarian.findBookByName(book_name));
+                    }
+                    else {
+                        System.out.println("Не правильный ввод");
+                    }
                     break;
                 case 4:
                     // Perform "quit" case.
