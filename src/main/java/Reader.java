@@ -3,8 +3,7 @@ public class Reader extends Person{
         librarian.giveBookToReader(this, book);
     }
 
-    /*public void returnBook(Book book){
-        Main.Library.returnBook(book);
-    }*/
-
+    public void returnBook(Librarian librarian, Book book){
+        librarian.returnBookFromReader(this, book);
+    }
 }
