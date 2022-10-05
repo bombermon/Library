@@ -1,6 +1,20 @@
 import java.util.Arrays;
 
 public class Librarian extends Person{
+
+    public Librarian(int id, String name, String surname, String patronymic, String address, String phone) {
+        super(id, name, surname, patronymic, address, phone);
+    }
+
+    public Book findBookByName(String bookName){
+        for (Book book: Main.Library.BooksInStock){
+            if (book.getName().equals(bookName)){
+                return book;
+            }
+        }
+        System.out.println("В библеотеке нет свободных книг с таким названием");
+        return null;
+    }
     public void giveBookToReader(Reader reader, Book book) {
         if (Main.Library.BooksInStock.contains(book)){
             ReaderCard readerCard = getReaderCardByReader(reader);
