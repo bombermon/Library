@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Book book = new Book(1,"1984","JoRj Bablic", "first","Bublic",
+                2007,"Jija");
         Manager manager = new Manager(1,"Anton", "Chertilov", "Genadevich",
                 "Moscow, Pushkina street, Kolotushkia, 1", "88005553535");
         Librarian librarian = new Librarian(2,"Maria", "Ivanovna", "Kuzminichna",
@@ -66,8 +68,7 @@ public class Main {
                         String nameBook = in.next();
                         librarian.findBookByName(nameBook);
                     }else if (w == 2) {
-                        
-
+                        librarian.giveBookToReader(reader,book);
                     }
                     else {
                         System.out.println("Не правильный ввод");
@@ -102,9 +103,6 @@ public class Main {
                     else {
                         System.out.println("Не правильный ввод");
                     }
-                    break;
-                case 4:
-                    // Perform "quit" case.
                     break;
                 default:
                     System.out.println("Вы ввели не тот пункт меню");
