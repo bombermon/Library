@@ -9,7 +9,6 @@ public class Main {
         while (choice != -4){
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
-33
             switch (choice) {
                 case 1:
                     // Perform "original number" case.
