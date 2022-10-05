@@ -7,7 +7,7 @@ public class Manager extends Person {  // создание менеджера н
     }
 
     public void addBookToLibrary(Book book){   // метод добавление книги в библиотеку
-        if (Arrays.asList(Main.Library.allBooks).contains(book)){
+        if (Main.Library.allBooks.contains(book)){
             System.out.println("Такая книга уже есть");
         }
         else{
@@ -17,9 +17,10 @@ public class Manager extends Person {  // создание менеджера н
     }
 
     public void deleteBookFromLibrary(Book book){  // метод удаление книги из библиотеки
-        if (Arrays.asList(Main.Library.BooksInStock).contains(book)){ // проверка находится ли книга в обороте
+        if (Main.Library.BooksInStock.contains(book)){ // проверка находится ли книга в обороте
             Main.Library.allBooks.remove(book);
             Main.Library.BooksInStock.remove(book);
+            System.out.println("Книга удалена!");
         }
         else {
             System.out.println("Книга на руках у читателя, ее нельзя удалить.");
@@ -37,7 +38,7 @@ public class Manager extends Person {  // создание менеджера н
     public void getStatsBooksCategory(String category){   // список книг конкретной категории
         int AllBookCounter = 0;
         for (int i = 0; i < Main.Library.allBooks.size(); i++) {  // поиск книг нужной нам категории
-            if (Main.Library.allBooks.get(i).equals(category)){
+            if (Main.Library.allBooks.get(i).getCategory().equals(category)){
                 AllBookCounter += 1;
 
             }
@@ -55,7 +56,35 @@ public class Manager extends Person {  // создание менеджера н
         }
         for (int i = 0; i < takenBooks.size(); i++) {  // поиск книг нужной нам категории
             Book temp = takenBooks.get(i);
-            System.out.println(String.format(" %s %s %s %s %s %s", temp.getName(), temp.getAuthor(), temp.getPublication(), temp.getPublisher(), String.valueOf(temp.getYearOfPublication()), temp.getCategory()));
+            System.out.println(String.format("%s %s %s %s %s %s", temp.getName(), temp.getAuthor(), temp.getPublication(), temp.getPublisher(), String.valueOf(temp.getYearOfPublication()), temp.getCategory()));
         }
+    }
+
+    public void getMostWanted(){
+        int mostwanted = -1;
+        String name_temp = "Nobody";
+        for (ReaderCard r : Main.Library.readerCards) {  // ищем пользователя в списке карточек
+            if (r.takenBooks.size() >= mostwanted){
+                mostwanted = r.takenBooks.size();
+                name_temp = String.format("FIO: %s, Address: %s, tel: %s, id: %s", r.reader.getFullname(), r.reader.getAddress(), r.reader.getPhone(), String.valueOf(r.reader.getId()));
+            }
+        }
+        System.out.println(name_temp);
+
+
+    }
+
+    public void getMostnotWanted(){
+        int notmostwanted = 100000;
+        String name_temp = "Nobody";
+        for (ReaderCard r : Main.Library.readerCards) {  // ищем пользователя в списке карточек
+            if (r.takenBooks.size() <= notmostwanted){
+                notmostwanted = r.takenBooks.size();
+                name_temp = String.format("FIO: %s, Address: %s, tel: %s, id: %s", r.reader.getFullname(), r.reader.getAddress(), r.reader.getPhone(), String.valueOf(r.reader.getId()));
+            }
+        }
+        System.out.println(name_temp);
+
+
     }
 }

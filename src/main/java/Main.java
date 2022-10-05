@@ -1,10 +1,13 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Book book = new Book(1,"1984","JoRj Bablic", "first","Bublic",
                 2007,"Jija");
@@ -16,7 +19,7 @@ public class Main {
                 "Moscow, Pushkina street, Kolotushkia, 34", "893712341222");
         manager.addBookToLibrary(new Book(1,"Java learning", "Rusik", "first",
                 "Bablic", 2021, "Programming"));
-        manager.addBookToLibrary(new Book(2,"Python learning", "Vovasik", "second",
+        manager.addBookToLibrary(new Book(2,"Python", "Vovasik", "second",
                 "Brivat", 2022, "Programming"));
         manager.addBookToLibrary(new Book(3,"JavaScript learning", "Sanek", "first",
                 "Bablic", 2019, "Programming"));
@@ -27,7 +30,7 @@ public class Main {
 
         int choice = -1;
         while (choice != -4){
-            System.out.println("Добро пожаловать в меню.\nВыберите кто вы: \n1. Менеджер\n2. Библиотекарь\n3. Читатель\n4. Никто");
+            System.out.println("Добро пожаловать в меню.\nВыберите кто вы: \n1. Менеджер\n2. Библиотекарь\n3. Читатель\n");
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -52,13 +55,14 @@ public class Main {
                         manager.addBookToLibrary(new Book(id,name,author,publication,publisher,yearOfPublication,category));
                     } else if (num == 2) {
                         System.out.print("Введите название книги: ");
-                        String book_for = in.next();
-                        System.out.println(librarian.findBookByName(book_for).getName());
+                        BufferedReader reader_1 = new BufferedReader(new InputStreamReader(System.in));
+
+                        String book_for = reader_1.readLine();
                         manager.deleteBookFromLibrary(librarian.findBookByName(book_for));
                         }
 
                     else if (num == 3) {
-                        System.out.println("Добро пожаловать в меню статистики.\nВыберите статистику: \n1. Статистика кол-во книг\n2. Статистика по категории\n3. Кол-во книг у человека");
+                        System.out.println("Добро пожаловать в меню статистики.\nВыберите статистику: \n1. Статистика кол-во книг\n2. Статистика по категории\n3. Кол-во книг у человека\n4. Самый разыскиваемый чел\n5. Самый никому ненужный чел");
                         int stats = in.nextInt();
                         if (stats == 1) {
                             manager.getStatsCounts();
@@ -71,7 +75,12 @@ public class Main {
                         else if (stats == 3){
                             manager.getStatsReadersBooks(reader);
                         }
-
+                        else if (stats == 4){
+                            manager.getMostWanted();
+                        }
+                        else if (stats == 5){
+                            manager.getMostnotWanted();
+                        }
                         else{
                             System.out.println("Неправильный ввод!");
                         }
@@ -88,7 +97,8 @@ public class Main {
                     if (w == 1) {
                         System.out.println("Введите название книги: ");
                         String nameBook = in.next();
-                        librarian.findBookByName(nameBook);
+                        Book temp_book = librarian.findBookByName(nameBook);
+                        System.out.println(String.format("%s %s %s %s %s %s", temp_book.getName(), temp_book.getAuthor(), temp_book.getPublication(), temp_book.getPublisher(), String.valueOf(temp_book.getYearOfPublication()), temp_book.getCategory()));
                     }else if (w == 2) {
                         librarian.giveBookToReader(reader,book);
                     }
