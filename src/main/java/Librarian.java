@@ -53,4 +53,15 @@ public class Librarian extends Person{
         }
         return null;
     }
+
+    public Book cheekBookToReturn(Reader reader, String bookName) {
+        ReaderCard readerCard = getReaderCardByReader(reader);
+        for(Book book: readerCard.takenBooks){
+            if (book.getName().equals(bookName)){
+                return book;
+            }
+        }
+        System.out.println("Читатель не должен вернуть книгу с таким названием");
+        return null;
+    }
 }

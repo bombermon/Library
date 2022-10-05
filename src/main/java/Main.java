@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +12,7 @@ public class Main {
                 2007,"Jija");
         Manager manager = new Manager(1,"Anton", "Chertilov", "Genadevich",
                 "Moscow, Pushkina street, Kolotushkia, 1", "88005553535");
+        manager.addBookToLibrary(book);
         Librarian librarian = new Librarian(2,"Maria", "Ivanovna", "Kuzminichna",
                 "Moscow, Pushkina street, Kolotushkia, 2", "88005553536");
         Reader reader = new Reader(3,"Zhenya", "Chikatilo", "Genadevich",
@@ -113,26 +113,16 @@ public class Main {
                     System.out.print("Выберите число:\n 1 - Взять книгу \n 2 - Вернуть книгу\n");
                     int n = in.nextInt();
                     if (n == 1) {
-                        System.out.print("Введите id: ");
-                        int id = in.nextInt();
-                        System.out.print("Введите имя пользователя: ");
-                        String name = in.next();
-                        System.out.print("Введите фамилию: ");
-                        String surname = in.next();
-                        System.out.print("Введите отчество: ");
-                        String patronymic = in.next();
-                        System.out.print("Введите адрес: ");
-                        String address = in.next();
-                        System.out.print("Введите телефон: ");
-                        String phone= in.next();
-                        new Reader(id,name,surname,patronymic,address,phone);
                         System.out.print("Введите название книги: ");
-                        String book_name= in.next();
+                        String book_name = in.next();
                         reader.takeBook(librarian, librarian.findBookByName(book_name));
                     }else if (n == 2) {
                         System.out.print("Введите название книги: ");
                         String book_name= in.next();
-                        reader.returnBook(librarian, librarian.findBookByName(book_name));
+                        Book bookToReturn = librarian.cheekBookToReturn(reader, book_name);
+                        if (bookToReturn != null){
+                            reader.returnBook(librarian, bookToReturn);
+                        }
                     }
                     else {
                         System.out.println("Не правильный ввод");
