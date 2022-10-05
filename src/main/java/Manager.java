@@ -56,7 +56,7 @@ public class Manager extends Person {  // создание менеджера н
         }
         for (int i = 0; i < takenBooks.size(); i++) {  // поиск книг нужной нам категории
             Book temp = takenBooks.get(i);
-            System.out.println(String.format(" %s %s %s %s %s %s", temp.getName(), temp.getAuthor(), temp.getPublication(), temp.getPublisher(), String.valueOf(temp.getYearOfPublication()), temp.getCategory()));
+            System.out.println(String.format("%s %s %s %s %s %s", temp.getName(), temp.getAuthor(), temp.getPublication(), temp.getPublisher(), String.valueOf(temp.getYearOfPublication()), temp.getCategory()));
         }
     }
 }
