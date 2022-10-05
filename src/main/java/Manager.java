@@ -1,6 +1,10 @@
 import java.util.Arrays;
 
-public class Manager {
+public class Manager extends Person {
+    public Manager(int id, String name, String surname, String patronymic, String address, String phone) {
+        super(id, name, surname, patronymic, address, phone);
+    }
+
     public void addBookToLibrary(Book book){
         if (Arrays.asList(Main.Library.allBooks).contains(book)){
             System.out.println("Такая книга уже есть");
