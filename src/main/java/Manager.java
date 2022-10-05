@@ -26,15 +26,15 @@ public class Manager extends Person {  // создание менеджера н
         }
     }
 
-    public String getStatsCounts() {   // статистика по количеству книг
+    public void getStatsCounts() {   // статистика по количеству книг
         String InHands = String.valueOf(Main.Library.BooksInHands.size());
         String InStock = String.valueOf(Main.Library.BooksInStock.size());
         String sum = String.valueOf(Main.Library.allBooks.size());
-        return String.format("Всего %s книг, %s книг в библиотеке и %s книг у читателей", sum, InStock, InHands);
+        System.out.println(String.format("Всего %s книг, %s книг в библиотеке и %s книг у читателей", sum, InStock, InHands));
 
     }
 
-    public String getStatsBooksCategory(String category){   // список книг конкретной категории
+    public void getStatsBooksCategory(String category){   // список книг конкретной категории
         int AllBookCounter = 0;
         for (int i = 0; i < Main.Library.allBooks.size(); i++) {  // поиск книг нужной нам категории
             if (Main.Library.allBooks.get(i).equals(category)){
@@ -42,10 +42,10 @@ public class Manager extends Person {  // создание менеджера н
 
             }
         }
-        return "Книг жанра '" + category+ "': " + String.valueOf(AllBookCounter);
+        System.out.println("Книг жанра '" + category+ "': " + String.valueOf(AllBookCounter));
     }
 
-    public String getStatsReadersBooks(Reader reader) {  // метод получения списка книг пользователя
+    public void getStatsReadersBooks(Reader reader) {  // метод получения списка книг пользователя
         ArrayList<Book> takenBooks = new ArrayList<Book>();
         for (ReaderCard r : Main.Library.readerCards) {  // ищем пользователя в списке карточек
             if (r.reader == reader) {
@@ -54,6 +54,6 @@ public class Manager extends Person {  // создание менеджера н
             }
         }
 
-        return Arrays.toString(takenBooks.toArray()).replace("[", "").replace("]", ""); // выводим обработанный список книг
+        System.out.println(Arrays.toString(takenBooks.toArray()).replace("[", "").replace("]", "")); // выводим обработанный список книг
     }
 }
