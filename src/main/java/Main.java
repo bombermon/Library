@@ -32,40 +32,61 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Выберите число:\n 1 - Добавить \n 2 - Удалить \n 3 - Вывод статистики");
+                    System.out.println("Выберите число:\n 1 - Добавить \n 2 - Удалить \n 3 - Вывод статистики");
                     int num = in.nextInt();
                     if (num == 1) {
-                        System.out.print("Введите id");
+                        System.out.print("Введите id: ");
                         int id = in.nextInt();
-                        System.out.print("Введите название книги");
+                        System.out.print("Введите название книги: ");
                         String name = in.next();
-                        System.out.print("Введите автора");
+                        System.out.print("Введите автора: ");
                         String author = in.next();
-                        System.out.print("Введите издание");
+                        System.out.print("Введите издание: ");
                         String publication = in.next();
-                        System.out.print("Введите издателя");
+                        System.out.print("Введите издателя: ");
                         String publisher= in.next();
-                        System.out.print("Введите год публикации");
+                        System.out.print("Введите год публикации: ");
                         int yearOfPublication = in.nextInt();
-                        System.out.print("Введите категорию");
+                        System.out.print("Введите категорию: ");
                         String category = in.next();
                         manager.addBookToLibrary(new Book(id,name,author,publication,publisher,yearOfPublication,category));
                     } else if (num == 2) {
-                        System.out.print("Введите название книги");
+                        System.out.print("Введите название книги: ");
                         String book_for = in.next();
-                        Book book_for_del = librarian.findBookByName(book_for);
-                        manager.deleteBookFromLibrary(book_for_del);
+                        System.out.println(librarian.findBookByName(book_for).getName());
+                        manager.deleteBookFromLibrary(librarian.findBookByName(book_for));
                         }
+
+                    else if (num == 3) {
+                        System.out.println("Добро пожаловать в меню статистики.\nВыберите статистику: \n1. Статистика кол-во книг\n2. Статистика по категории\n3. Кол-во книг у человека");
+                        int stats = in.nextInt();
+                        if (stats == 1) {
+                            manager.getStatsCounts();
+                        }
+                        else if (stats == 2){
+                            System.out.println("Введите категорию: ");
+                            String cat = in.next();
+                            manager.getStatsBooksCategory(cat);
+                        }
+                        else if (stats == 3){
+                            manager.getStatsReadersBooks(reader);
+                        }
+
+                        else{
+                            System.out.println("Неправильный ввод!");
+                        }
+
+                    }
                     else {
                         System.out.println("Не правильный ввод");
                     }
                     break;
 
                 case 2:
-                    System.out.print("Выберите число:\n 1 - Поиск книг в библиотеке \n 2 - Дать книгу читателю");
+                    System.out.print("Выберите число:\n 1 - Поиск книг в библиотеке \n 2 - Дать книгу читателю\n");
                     int w = in.nextInt();
                     if (w == 1) {
-                        System.out.println("Введите название книги");
+                        System.out.println("Введите название книги: ");
                         String nameBook = in.next();
                         librarian.findBookByName(nameBook);
                     }else if (w == 2) {
@@ -77,27 +98,27 @@ public class Main {
 
                     break;
                 case 3:
-                    System.out.print("Выберите число:\n 1 - Взять книгу \n 2 - Вернуть книгу");
+                    System.out.print("Выберите число:\n 1 - Взять книгу \n 2 - Вернуть книгу\n");
                     int n = in.nextInt();
                     if (n == 1) {
-                        System.out.print("Введите id");
+                        System.out.print("Введите id: ");
                         int id = in.nextInt();
-                        System.out.print("Введите имя пользователя");
+                        System.out.print("Введите имя пользователя: ");
                         String name = in.next();
-                        System.out.print("Введите фамилию");
+                        System.out.print("Введите фамилию: ");
                         String surname = in.next();
-                        System.out.print("Введите отчество");
+                        System.out.print("Введите отчество: ");
                         String patronymic = in.next();
-                        System.out.print("Введите адрес");
+                        System.out.print("Введите адрес: ");
                         String address = in.next();
-                        System.out.print("Введите телефон");
+                        System.out.print("Введите телефон: ");
                         String phone= in.next();
                         new Reader(id,name,surname,patronymic,address,phone);
-                        System.out.print("Введите название книги");
+                        System.out.print("Введите название книги: ");
                         String book_name= in.next();
                         reader.takeBook(librarian, librarian.findBookByName(book_name));
                     }else if (n == 2) {
-                        System.out.print("Введите название книги");
+                        System.out.print("Введите название книги: ");
                         String book_name= in.next();
                         reader.returnBook(librarian, librarian.findBookByName(book_name));
                     }
