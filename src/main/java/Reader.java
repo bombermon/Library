@@ -1,10 +1,10 @@
 public class Reader extends Person{
-    public void takeBook(Book book){
-        Main.Library.takeBook(book);
+    public void takeBook(Librarian librarian, Book book){
+        librarian.giveBookToReader(this, book);
     }
 
-    public void returnBook(Book book){
+    /*public void returnBook(Book book){
         Main.Library.returnBook(book);
-    }
+    }*/
 
 }
