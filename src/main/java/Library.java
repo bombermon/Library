@@ -33,4 +33,9 @@ public class Library {
 
 
     }
+
+    public String getStats(){
+
+        return "hello";
+    }
 }
