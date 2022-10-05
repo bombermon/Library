@@ -6,11 +6,12 @@ public class Main {
     public static void main(String[] args) {
 
 
+
     }
 
     public static class Library {
-        static List<Book> allBooks = new ArrayList<Book>();
-        static ArrayList<ReaderCard> readerCards = new ArrayList<ReaderCard>();
+        protected static List<Book> allBooks = new ArrayList<Book>();
+        protected static ArrayList<ReaderCard> readerCards = new ArrayList<ReaderCard>();
 
         static List<Book> BooksInStock = new ArrayList<Book>();
         static List<Book> BooksInHands = new ArrayList<Book>();
@@ -38,6 +39,14 @@ public class Main {
 
 
 
+        }
+
+        protected static void takeBook(Book book){
+            /// ДОПИСАТЬ !!!
+        }
+
+        protected static void returnBook(Book book) {
+            /// ДОПИСАТЬ !!!
         }
 
         protected static String getStats(){
