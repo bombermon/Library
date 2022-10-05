@@ -1,10 +1,13 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Book book = new Book(1,"1984","JoRj Bablic", "first","Bublic",
                 2007,"Jija");
@@ -16,7 +19,7 @@ public class Main {
                 "Moscow, Pushkina street, Kolotushkia, 34", "893712341222");
         manager.addBookToLibrary(new Book(1,"Java learning", "Rusik", "first",
                 "Bablic", 2021, "Programming"));
-        manager.addBookToLibrary(new Book(2,"Python learning", "Vovasik", "second",
+        manager.addBookToLibrary(new Book(2,"Python", "Vovasik", "second",
                 "Brivat", 2022, "Programming"));
         manager.addBookToLibrary(new Book(3,"JavaScript learning", "Sanek", "first",
                 "Bablic", 2019, "Programming"));
@@ -52,8 +55,10 @@ public class Main {
                         manager.addBookToLibrary(new Book(id,name,author,publication,publisher,yearOfPublication,category));
                     } else if (num == 2) {
                         System.out.print("Введите название книги: ");
-                        String book_for = in.next();
-                        System.out.println(librarian.findBookByName(book_for).getName());
+                        BufferedReader reader_1 = new BufferedReader(new InputStreamReader(System.in));
+
+                        String book_for = reader_1.readLine();
+                        System.out.println(book_for);
                         manager.deleteBookFromLibrary(librarian.findBookByName(book_for));
                         }
 
@@ -88,7 +93,8 @@ public class Main {
                     if (w == 1) {
                         System.out.println("Введите название книги: ");
                         String nameBook = in.next();
-                        librarian.findBookByName(nameBook);
+                        Book temp_book = librarian.findBookByName(nameBook);
+                        System.out.
                     }else if (w == 2) {
                         librarian.giveBookToReader(reader,book);
                     }
