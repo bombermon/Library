@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Library {
-    List<Book> allBooks = new ArrayList<Book>();
-    ArrayList<ReaderCard> readerCards = new ArrayList<ReaderCard>();
+public static class Library {
+    static List<Book> allBooks = new ArrayList<Book>();
+    static ArrayList<ReaderCard> readerCards = new ArrayList<ReaderCard>();
 
-    List<Book> BooksInStock = new ArrayList<Book>();
-    List<Book> BooksInHands = new ArrayList<Book>();
+    static List<Book> BooksInStock = new ArrayList<Book>();
+    static List<Book> BooksInHands = new ArrayList<Book>();
 
 
-    public void addBook(Book book){
+    protected static void addBook(Book book){
         if (Arrays.asList(allBooks).contains(book)){
             System.out.println("Такая книга уже есть");
         }
@@ -21,7 +21,7 @@ public class Library {
 
     }
 
-    public void deleteBook(Book book){
+    protected static void deleteBook(Book book){
         if (Arrays.asList(BooksInStock).contains(book)){
             allBooks.remove(book);
             BooksInStock.remove(book);
@@ -34,7 +34,7 @@ public class Library {
 
     }
 
-    public String getStats(){
+    protected static String getStats(){
 
         return "hello";
     }
