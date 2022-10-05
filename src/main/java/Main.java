@@ -24,6 +24,7 @@ public class Main {
 
         int choice = -1;
         while (choice != -4){
+            System.out.println("Добро пожаловать в меню.\nВыберите кто вы: \n1. Менеджер\n2. Библиотекарь\n3. Читатель\n4. Никто");
             choice = scanner.nextInt();
 
             switch (choice) {
