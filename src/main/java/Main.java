@@ -98,7 +98,9 @@ public class Main {
                         System.out.println("Введите название книги: ");
                         String nameBook = in.next();
                         Book temp_book = librarian.findBookByName(nameBook);
-                        System.out.println(String.format("%s %s %s %s %s %s", temp_book.getName(), temp_book.getAuthor(), temp_book.getPublication(), temp_book.getPublisher(), String.valueOf(temp_book.getYearOfPublication()), temp_book.getCategory()));
+                        if (temp_book != null) {
+                            System.out.println(String.format("%s %s %s %s %s %s", temp_book.getName(), temp_book.getAuthor(), temp_book.getPublication(), temp_book.getPublisher(), String.valueOf(temp_book.getYearOfPublication()), temp_book.getCategory()));
+                        }
                     }else if (w == 2) {
                         librarian.giveBookToReader(reader,book);
                     }
