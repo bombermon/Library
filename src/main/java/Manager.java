@@ -59,4 +59,32 @@ public class Manager extends Person {  // создание менеджера н
             System.out.println(String.format("%s %s %s %s %s %s", temp.getName(), temp.getAuthor(), temp.getPublication(), temp.getPublisher(), String.valueOf(temp.getYearOfPublication()), temp.getCategory()));
         }
     }
+
+    public void getMostWanted(){
+        int mostwanted = -1;
+        String name_temp = "Nobody";
+        for (ReaderCard r : Main.Library.readerCards) {  // ищем пользователя в списке карточек
+            if (r.takenBooks.size() >= mostwanted){
+                mostwanted = r.takenBooks.size();
+                name_temp = String.format("FIO: %s, Address: %s, tel: %s, id: %s", r.reader.getFullname(), r.reader.getAddress(), r.reader.getPhone(), String.valueOf(r.reader.getId()));
+            }
+        }
+        System.out.println(name_temp);
+
+
+    }
+
+    public void getMostnotWanted(){
+        int notmostwanted = 100000;
+        String name_temp = "Nobody";
+        for (ReaderCard r : Main.Library.readerCards) {  // ищем пользователя в списке карточек
+            if (r.takenBooks.size() <= notmostwanted){
+                notmostwanted = r.takenBooks.size();
+                name_temp = String.format("FIO: %s, Address: %s, tel: %s, id: %s", r.reader.getFullname(), r.reader.getAddress(), r.reader.getPhone(), String.valueOf(r.reader.getId()));
+            }
+        }
+        System.out.println(name_temp);
+
+
+    }
 }

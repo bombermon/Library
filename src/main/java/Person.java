@@ -42,7 +42,7 @@ public abstract class Person { // класс-мама для всех польз
     }
 
     public String getFullname(){
-        return this.surname + this.name + this.patronymic;
+        return this.surname + " " + this.name + " " + this.patronymic;
     }
 
     /// *** КОНЕЦ ГЕТ-МЕТОДОВ ***

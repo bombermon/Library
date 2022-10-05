@@ -62,7 +62,7 @@ public class Main {
                         }
 
                     else if (num == 3) {
-                        System.out.println("Добро пожаловать в меню статистики.\nВыберите статистику: \n1. Статистика кол-во книг\n2. Статистика по категории\n3. Кол-во книг у человека");
+                        System.out.println("Добро пожаловать в меню статистики.\nВыберите статистику: \n1. Статистика кол-во книг\n2. Статистика по категории\n3. Кол-во книг у человека\n4. Самый разыскиваемый чел\n5. Самый никому ненужный чел");
                         int stats = in.nextInt();
                         if (stats == 1) {
                             manager.getStatsCounts();
@@ -75,7 +75,12 @@ public class Main {
                         else if (stats == 3){
                             manager.getStatsReadersBooks(reader);
                         }
-
+                        else if (stats == 4){
+                            manager.getMostWanted();
+                        }
+                        else if (stats == 5){
+                            manager.getMostnotWanted();
+                        }
                         else{
                             System.out.println("Неправильный ввод!");
                         }
