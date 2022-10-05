@@ -26,9 +26,6 @@ public class Main {
                     System.out.println("Вы ввели не тот пункт меню");
             }
         }
-
-
-
     }
 
     public static class Library {
