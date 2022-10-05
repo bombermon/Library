@@ -1,4 +1,4 @@
-public abstract class Person {
+public abstract class Person { // класс-мама для всех пользователей
     private int id;
     private String name;
     private String surname;
@@ -6,7 +6,7 @@ public abstract class Person {
     private String address;
     private String phone;
 
-    public void Person(int id, String name, String surname, String patronymic, String address, String phone){
+    public Person(int id, String name, String surname, String patronymic, String address, String phone){ // создание персона
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -16,6 +16,7 @@ public abstract class Person {
 
     }
 
+    /// *** НАЧАЛО ГЕТ-МЕТОДОВ ***
     public int getId(){
        return this.id;
     }
@@ -43,4 +44,6 @@ public abstract class Person {
     public String getFullname(){
         return this.surname + this.name + this.patronymic;
     }
+
+    /// *** КОНЕЦ ГЕТ-МЕТОДОВ ***
 }
