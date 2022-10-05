@@ -25,6 +25,7 @@ public class Main {
         int choice = -1;
         while (choice != -4){
             choice = scanner.nextInt();
+
             switch (choice) {
                 case 1:
                     // Perform "original number" case.
